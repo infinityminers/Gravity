@@ -1,4 +1,4 @@
-package com.jstnf.gravity;
+package com.infinityminers.gravity;
 
 import org.bukkit.configuration.file.YamlConfiguration;
 

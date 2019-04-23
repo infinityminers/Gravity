@@ -1,4 +1,4 @@
-package com.jstnf.gravity;
+package com.infinityminers.gravity;
 
 import javafx.util.Pair;
 import org.bukkit.World;
