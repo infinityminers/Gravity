@@ -9,6 +9,7 @@ public class GravityCommand implements CommandExecutor
 {
 	private Gravity plugin;
 
+	/* Messages for default /gravity message */
 	private final String header = ChatColor.WHITE + "InfinityMiners " + ChatColor.AQUA + ChatColor.BOLD + "Gravity";
 	private final String version = ChatColor.WHITE + "v1.0.0 - jstnf / pokeball92870 - 2019";
 
@@ -20,42 +21,40 @@ public class GravityCommand implements CommandExecutor
 	@Override
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args)
 	{
-		if (args.length != 1)
+		/* Check arguments */
+		if (args.length == 1)
 		{
-			sendDefaultMessage(sender);
-			return true;
-		}
-
-		String sub = args[0];
-		if (sub.equalsIgnoreCase("toggle"))
-		{
-			if (!sender.hasPermission("gravity.toggle"))
+			/* /gravity toggle */
+			String sub = args[0];
+			if (sub.equalsIgnoreCase("toggle"))
 			{
-				sendDefaultMessage(sender);
-			}
-			else
-			{
-				plugin.running = !plugin.running;
-				if (plugin.running)
+				/* Check permissions */
+				if (sender.hasPermission("gravity.toggle"))
 				{
-					sender.sendMessage(
-							"Gravity effects have now been " + ChatColor.GREEN + "ENABLED" + ChatColor.WHITE + ".");
-				}
-				else
-				{
-					sender.sendMessage(
-							"Gravity effects have now been " + ChatColor.RED + "DISABLED" + ChatColor.WHITE + ".");
+					plugin.doGravity = !plugin.doGravity;
+					if (plugin.doGravity)
+					{
+						sender.sendMessage(
+								"Gravity effects have now been " + ChatColor.GREEN + "ENABLED" + ChatColor.WHITE + ".");
+					}
+					else
+					{
+						sender.sendMessage(
+								"Gravity effects have now been " + ChatColor.RED + "DISABLED" + ChatColor.WHITE + ".");
+					}
+					return true;
 				}
 			}
 		}
-		else
-		{
-			sendDefaultMessage(sender);
-		}
 
+		sendDefaultMessage(sender);
 		return true;
 	}
 
+	/**
+	 * Message displayed to sender if player enters incorrect command syntax or doesn't have permissions.
+	 * @param sender - The command sender.
+	 */
 	private void sendDefaultMessage(CommandSender sender)
 	{
 		sender.sendMessage("");

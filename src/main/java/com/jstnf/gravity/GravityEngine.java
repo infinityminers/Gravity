@@ -27,7 +27,8 @@ public class GravityEngine implements Runnable
 	@Override
 	public void run()
 	{
-		if (plugin.running)
+		/* Check if plugin is applying gravity changes */
+		if (plugin.doGravity)
 		{
 			for (Pair<World, Double> p : plugin.affectedWorlds)
 			{
@@ -55,16 +56,16 @@ public class GravityEngine implements Runnable
 							if (dy > 0.0D && (newV.getY() < -0.01D || newV.getY() > 0.01D))
 							{
 								newV.setY(oldV.getY() - dy * gravity);
-								boolean newxchanged = newV.getX() < -0.001D || newV.getX() > 0.001D;
-								boolean oldxchanged = oldV.getX() < -0.001D || oldV.getX() > 0.001D;
-								if (newxchanged && oldxchanged)
+								boolean newXChanged = newV.getX() < -0.001D || newV.getX() > 0.001D;
+								boolean oldXChanged = oldV.getX() < -0.001D || oldV.getX() > 0.001D;
+								if (newXChanged && oldXChanged)
 								{
 									newV.setX(oldV.getX());
 								}
 
-								boolean newzchanged = newV.getZ() < -0.001D || newV.getZ() > 0.001D;
-								boolean oldzchanged = oldV.getZ() < -0.001D || oldV.getZ() > 0.001D;
-								if (newzchanged && oldzchanged)
+								boolean newZChanged = newV.getZ() < -0.001D || newV.getZ() > 0.001D;
+								boolean oldZChanged = oldV.getZ() < -0.001D || oldV.getZ() > 0.001D;
+								if (newZChanged && oldZChanged)
 								{
 									newV.setZ(oldV.getZ());
 								}

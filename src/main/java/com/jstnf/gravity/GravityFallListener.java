@@ -18,8 +18,10 @@ public class GravityFallListener implements Listener
 	@EventHandler
 	public void onFallDamage(EntityDamageEvent e)
 	{
+		/* Check damage cause */
 		if (e.getCause() == EntityDamageEvent.DamageCause.FALL)
 		{
+			/* Check if entity is in an affected world */
 			String entityWorld = e.getEntity().getWorld().getName();
 			for (Pair<World, Double> pair : plugin.affectedWorlds)
 			{

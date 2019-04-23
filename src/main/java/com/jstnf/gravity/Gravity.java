@@ -12,16 +12,16 @@ import java.util.List;
 public class Gravity extends JavaPlugin
 {
 	private GravityEngine gravityTask;
+	private GravitySettings settings;
 
-	public GravitySettings settings;
-	public boolean running;
+	public boolean doGravity;
 	public ArrayList<Pair<World, Double>> affectedWorlds;
 
 	public Gravity()
 	{
 		gravityTask = new GravityEngine(this);
 		affectedWorlds = new ArrayList<>();
-		running = true;
+		doGravity = true;
 	}
 
 	@Override
@@ -33,7 +33,7 @@ public class Gravity extends JavaPlugin
 			return;
 		}
 
-		running = settings.config.getBoolean(GravitySettings.Defaults.ENABLED_ON_START.getPath(),
+		doGravity = settings.config.getBoolean(GravitySettings.Defaults.ENABLED_ON_START.getPath(),
 				(boolean) GravitySettings.Defaults.ENABLED_ON_START.getDefaultValue());
 
 		validateWorlds();
@@ -53,6 +53,9 @@ public class Gravity extends JavaPlugin
 		getLogger().info("Gravity has been disabled.");
 	}
 
+	/**
+	 * Get the entries from config and assign the Worlds and gravity values to be used in the GravityEngine.
+	 */
 	private void validateWorlds()
 	{
 		List<String> entries = settings.config.getStringList(GravitySettings.Defaults.WORLDS.getPath());
@@ -79,6 +82,11 @@ public class Gravity extends JavaPlugin
 		}
 	}
 
+	/**
+	 * Returns whether or not the String s is a double.
+	 * @param s - A string.
+	 * @return - If s is a double, return true, false otherwise.
+	 */
 	private boolean isDouble(String s)
 	{
 		try
