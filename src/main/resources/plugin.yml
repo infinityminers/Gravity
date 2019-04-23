@@ -1,0 +1,14 @@
+name: Gravity
+version: 1.0.0
+main: com.jstnf.gravity.Gravity
+
+author: jstnf
+description: Change gravity in worlds using entity velocity manipulation
+
+api-version: 1.12
+
+commands:
+  gravity:
+    aliases: [imgravity]
+    description: Main command for Gravity.
+    permission: gravity.gravity
