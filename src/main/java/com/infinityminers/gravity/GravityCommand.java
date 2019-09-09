@@ -11,7 +11,7 @@ public class GravityCommand implements CommandExecutor
 
 	/* Messages for default /gravity message */
 	private final String header = ChatColor.WHITE + "InfinityMiners " + ChatColor.AQUA + ChatColor.BOLD + "Gravity";
-	private final String version = ChatColor.WHITE + "v1.0.0 - jstnf / pokeball92870 - 2019";
+	private final String version = ChatColor.WHITE + "v1.0.2 - jstnf / pokeball92870 - 2019";
 
 	public GravityCommand(Gravity plugin)
 	{

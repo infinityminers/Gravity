@@ -1,6 +1,6 @@
 package com.infinityminers.gravity;
 
-import javafx.util.Pair;
+import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
@@ -8,6 +8,7 @@ import org.bukkit.util.Vector;
 
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.UUID;
 
 public class GravityEngine implements Runnable
@@ -30,9 +31,9 @@ public class GravityEngine implements Runnable
 		/* Check if plugin is applying gravity changes */
 		if (plugin.doGravity)
 		{
-			for (Pair<World, Double> p : plugin.affectedWorlds)
+			for (Map.Entry<String, Double> p : plugin.gravityWorlds.entrySet())
 			{
-				World w = p.getKey();
+				World w = Bukkit.getWorld(p.getKey());
 				double gravity = p.getValue();
 				Iterator<Entity> entIter = w.getEntities().iterator();
 

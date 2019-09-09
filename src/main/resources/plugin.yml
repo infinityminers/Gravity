@@ -1,11 +1,9 @@
 name: Gravity
-version: 1.0.1
+version: 1.0.2
 main: com.infinityminers.gravity.Gravity
 
 author: jstnf
 description: Change gravity in worlds using entity velocity manipulation
-
-api-version: 1.12
 
 commands:
   gravity:

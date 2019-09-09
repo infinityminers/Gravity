@@ -1,12 +1,11 @@
 package com.infinityminers.gravity;
 
-import javafx.util.Pair;
 import org.bukkit.Bukkit;
-import org.bukkit.World;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitScheduler;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Gravity extends JavaPlugin
@@ -15,12 +14,12 @@ public class Gravity extends JavaPlugin
 	private GravitySettings settings;
 
 	public boolean doGravity;
-	public ArrayList<Pair<World, Double>> affectedWorlds;
+	public HashMap<String, Double> gravityWorlds;
 
 	public Gravity()
 	{
 		gravityTask = new GravityEngine(this);
-		affectedWorlds = new ArrayList<>();
+		gravityWorlds = new HashMap<String, Double>();
 		doGravity = true;
 	}
 
@@ -73,10 +72,7 @@ public class Gravity extends JavaPlugin
 				String g = s.substring(colonIndex + 1);
 				if (Bukkit.getWorld(worldName) != null && isDouble(g))
 				{
-					World world = Bukkit.getWorld(worldName);
-					double gravity = Double.parseDouble(g);
-					Pair<World, Double> pair = new Pair(world, gravity);
-					affectedWorlds.add(pair);
+					gravityWorlds.put(worldName, Double.parseDouble(g));
 				}
 			}
 		}
